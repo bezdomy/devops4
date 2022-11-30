@@ -64,9 +64,9 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    useradd -p '$6$kukuchka$UMcVZvjSQquEJAfWbCF0iOhdj964DXoQrsuCNEf9UoRjxX5LYp1ZLw7Q82fTtwv5cCnqUT0Hq4N9VGRiyjeVi/' adminuser
+    useradd -m -d /home/adminuser -s /bin/bash -p '$6$kukuchka$UMcVZvjSQquEJAfWbCF0iOhdj964DXoQrsuCNEf9UoRjxX5LYp1ZLw7Q82fTtwv5cCnqUT0Hq4N9VGRiyjeVi/' adminuser
     usermod -a -G admin adminuser
-    useradd -m poweruser
+    useradd -m -s /bin/bash poweruser
     passwd -d poweruser
     echo 'poweruser ALL=NOPASSWD: /usr/sbin/iptables' >> /etc/sudoers
     usermod -a -G adminuser poweruser
